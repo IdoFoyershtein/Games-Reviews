@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <!-- Meta tags -->
+        <meta charset="UTF-8">
+        <title>Games Reviews</title>
+        <!-- Linking to stylesheet -->
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='/styles.css')}}">
+    </head>
+
+    <body>
+        <!-- Game description -->
+        <div class="description-container">
+            <h1>Marvel's Spider-Man</h1>
+            <img src="{{ url_for('static', filename='spider-man.png') }}" />
+            <div class="description">Sony Interactive Entertainment, Insomniac Games, and Marvel have teamed up to create an authentic Spider-Man adventure.<br>
+                This isn’t the Spider-Man you’ve met or ever seen before. This is an experienced Peter Parker who’s more masterful at fighting big crime in Marvel's New York.<br>
+                At the same time, he’s struggling to balance his chaotic personal life and career while the fate of millions of New Yorkers rest upon his shoulders.</div>
+            <!-- Display the average rating of the game-->
+            <h1>Average Rating: {{avg_rate}}/5</h1>
+        </div>
+
+        <hr>
+
+        <!-- Form to submit a review -->
+        <form name="passdata" action="/submit_review" method="post" >
+            <h3>Add your review for the game:</h3>
+            
+            <br>
+            
+            <!-- Textarea for user review -->
+            <textarea id="userreview" name="userreview" rows="4" cols="50" placeholder="Write your review here"></textarea>
+            
+            <br>
+
+             <!-- Dropdown list for selecting rating -->
+            <label for="rating">Rating:</label>
+            <select id="rating" name="ratelist">
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+            </select>
+
+            <!-- Submit button -->
+            <input type="submit" value="submit">
+        </form>
+
+        <!-- Section to display existing reviews -->
+        <h2>Reviews:</h2>
+        
+        <!-- Search form -->
+        <form method="get" action="/search" class="search-form">
+            <div class="search-container">
+                <input type="text" id="search_query" name="query" placeholder="Search reviews">
+                <input type="submit" value="search">
+            </div>
+            <p class="occurrences">Total occurrences for '{{ query }}': {{ total_occurrences }}</p>
+            
+        </form>
+        
+        <div class="reviews">
+            <!-- Loop through each review and display it -->
+            {% for review in reviews %}
+                <div class="review">
+                    <!-- Display review content -->
+                    <p>{{ review['review'] }} <br> {{ review['rating'] }}/5</p>
+                     <!-- Form to delete a review -->
+                    <form method="post" action="/delete_review">
+                        <!-- Hidden input to pass review ID -->
+                        <input type="hidden" name="review_id" value="{{ review['_id'] }}">
+                         <!-- Delete button -->
+                        <button type="submit" class="delete-button">X</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+
+    </body>
+</html>

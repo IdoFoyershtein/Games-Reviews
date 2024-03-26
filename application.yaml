@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: games-reviews-release
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://https://github.com/IdoFoyershtein/Games-Reviews
+    targetRevision: HEAD
+    path: ./games-reviews-helm
+    helm:
+      parameters:
+        - name: image.repository  # Assuming your Helm values use this key
+          value: idof228/games-reviews-app
+        - name: image.tag  # Assuming your Helm values use this key
+          value: latest
+        - name: image.pullPolicy  # Ensure your Helm chart supports this parameter
+          value: Always
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

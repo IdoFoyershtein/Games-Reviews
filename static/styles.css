@@ -1,0 +1,212 @@
+/* Reset default browser styles */
+* {
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif; /* Set the font family to Arial if available, otherwise use a generic sans-serif font */
+    background-image: url('marvels-spider-man-desktop-wallpaper.png'); /* Set the path to your image */
+    background-size: cover; /* Cover the entire background */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    background-position: center center; /* Center the background image */
+    background-attachment: fixed; /* Keep the background fixed while scrolling */
+}
+
+/* Description container styles */
+.description-container {
+    display: flex; /* Sets the element to use flexbox layout, allowing for easy alignment and distribution of child elements */
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    flex-direction: column; /* Stack items vertically */
+    margin-top: 50px; /* Adjust margin to bring the container down */
+    margin-bottom: 20px; /* Adjust margin to bring the container up */
+}
+
+/* Heading styles */
+h1 {
+    color: #333; /* Sets the text color */
+    background-color: #ECECEC; /* Sets the background color*/
+    margin-bottom: 10px; /* Added space below headings */
+    text-align: center; /* Center align the heading */
+    padding: 10px; /* Padding around the text */
+    display: inline-block; /* Display as inline-block to wrap around the text */
+    margin-left: auto; /* Set left margin to auto */
+    margin-right: auto; /* Set right margin to auto */
+    border: 1px solid #ccc; /* Sets a border around the element with a width of 1 pixel, solid style, and color */
+    border-radius: 5px; /* Rounds the corners of the element */
+}
+
+h2 {
+    color: #333; /* Sets the text color */
+    background-color: #ECECEC; /* Sets the background color*/
+    padding: 10px; /* Padding around the text */
+    display: inline; /* Make headings inline elements */
+    border: 1px solid #ccc; /* Sets a border around the element with a width of 1 pixel, solid style, and color */
+    border-radius: 5px; /* Rounds the corners of the element */
+    margin: 20px; /* Sets a margin on all four sides of the element */
+}
+
+h3 {
+    color: #333; /* Sets the text color */
+    background-color: #ECECEC; /* Sets the background color*/
+    padding: 10px; /* Padding around the text */
+    display: inline; /* Make headings inline elements */
+    border: 1px solid #ccc; /* Sets a border around the element with a width of 1 pixel, solid style, and color */
+    border-radius: 5px; /* Rounds the corners of the element */
+}
+
+/* Image styles */
+img {
+    max-width: 45%; /* Sets the maximum width, allowing it to shrink responsively */
+    height: auto; /* Automatically adjusts the height of the element to maintain its aspect ratio */
+    display: block; /* Sets the element to be a block-level element, causing it to start on a new line and take up the full width available */
+    margin: 0 auto; /* Centers the image */
+    border-radius: 5px; /* Rounds the corners of the element */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a box shadow to the element */
+    margin-bottom: 20px; /* Added space below image */
+}
+
+/* Game description styles */
+.description {
+    width: fit-content; /* Set width to fit-content */
+    margin-left: auto; /* Center align the div */
+    margin-right: auto; /* Center align the div */
+    text-align: center; /* Center align the heading */
+    padding: 10px; /* Padding around the text */
+    border: 1px solid #ccc; /* Sets a border around the element with a width of 1 pixel, solid style, and color */
+    border-radius: 5px; /* Rounds the corners of the element */
+    background-color: #ECECEC; /* Sets the background color*/
+    margin-bottom: 20px; /* Added space below each paragraph */
+    max-width: calc(100% - 22px); /* Adjusting the width for padding and border */
+}
+
+/* Form styles */
+form {
+    margin-top: 20px; /* Added space above form */
+    margin-bottom: 20px; /* Added space below form */
+    margin: 20px; /* Sets a margin on all four sides of the element */
+}
+
+/* Textarea styles */
+textarea {
+    width: 75%; /* Sets the width of the element to 75% of its containing element's width */
+    padding: 10px; /* Padding around the text */
+    border: 1px solid #ccc; /* Sets a border around the element with a width of 1 pixel, solid style, and color */
+    border-radius: 5px; /* Rounds the corners of the element */
+    margin-top: 20px; /* Added space above textarea */
+    margin-bottom: 20px; /* Added space below textarea */
+}
+
+/* Rating label styles */
+label[for="rating"] {
+    color: #333; /* Sets the text color */
+    background-color: #ECECEC; /* Background color */
+    padding: 8px; /* Padding around the text */
+    display: inline-block; /* Display as inline-block */
+    border: 1px solid #ccc; /* Sets a border around the element with a width of 1 pixel, solid style, and color */
+    border-radius: 5px; /* Rounds the corners of the element */
+}
+
+/* Select styles */
+select {
+    padding: 8px; /* Padding around the text */
+    border: 1px solid #ccc; /* Sets a border around the element with a width of 1 pixel, solid style, and color */
+    border-radius: 5px; /* Rounds the corners of the element */
+    margin-bottom: 20px; /* Added space below select */
+}
+
+/* Submit button styles */
+input[type="submit"] {
+    padding: 10px 20px; /* Padding: 10px top/bottom, 20px left/right */
+    background-color: #007bff; /* Background color */
+    color: #fff; /* Sets the text color */
+    border: none; /* Removes any border around the element */
+    border-radius: 5px; /* Rounds the corners of the element */
+    cursor: pointer; /* Cursor changes to pointer on hover */
+    margin-bottom: 20px; /* Added space below submit button */
+}
+
+/* Search form styles */
+.search-form {
+    display: flex; /* Turns the element into a flex container */
+    align-items: baseline; /* Align items at the baseline */
+    padding: 8px; /* Padding around the text */
+    margin-left: 4px; /* Added space on the left side */
+}
+
+/* Search container styles */
+.search-container {
+    display: flex; /* Turns the element into a flex container */
+    align-items: baseline; /* Align items at the baseline */
+    margin-right: 10px; /* Adjust the margin between inputs and occurrences */
+}
+
+/* Search query styles */
+#search_query {
+    padding: 8px; /* Padding for the input */
+    border: 1px solid #ccc; /* Border around the input */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    width: 250px; /* Width of the input */
+    margin: 8px; /* Sets a margin on all four sides of the element */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */
+}
+
+/* Search query focus styles */
+#search_query:focus {
+    outline: none; /* Remove outline when focused */
+    border-color: #007bff; /* Change border color when focused */
+}
+
+/* Total occurrences styles */
+.occurrences {
+    width: 20%; /* Sets the width of the element to 20% of its containing element's width */
+    padding: 8px; /* Padding around the text */
+    align-self: baseline; /* Align the occurrences message at the baseline */
+}
+
+/* Reviews section styles */
+.reviews {
+    display: grid; /* Turns the element into a grid container */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust based on your layout */
+    gap: 20px; /* Adjust based on your layout */
+    margin: 20px; /* Sets a margin on all four sides of the element */
+}
+
+/* Individual review styles */
+.review {
+    position: relative; /* Make position relative for absolute positioning */
+    display: inline-block; /* Display as inline-block */
+    background-color: #ECECEC; /* Background color */
+    padding: 10px; /* Padding around the text */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Paragraph styles */
+p {
+    background-color: #fff; /* Background color */
+    padding: 12px; /* Padding around the text */
+    border: 1px solid #ccc; /* Border around the input */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; /* Center align the heading */
+}
+
+/* Delete button styles */
+.delete-button {
+    position: absolute; /* Make position absolutely relative to its closest positioned ancestor */
+    top: 5px; /* Positions the element 5 pixels from the top of its containing element */
+    right: 5px; /* Positions the element 5 pixels from the right of its containing element */
+    background-color: #ff0000; /* Background color */
+    color: #fff; /* Sets the text color */
+    border: none; /* Removes any border around the element */
+    border-radius: 50%; /* Creating a circle shape by making all four corners of the element rounded */
+    width: 20px; /* Width of the input */
+    height: 20px; /* Height of the input */
+    line-height: 16px; /* Sets the line height of text within the element to 16 pixels, effectively determining the vertical spacing between lines */
+    text-align: center; /* Center align the heading */
+    cursor: pointer; /* Cursor changes to pointer on hover */
+    font-size: 12px; /* Font size */
+}
