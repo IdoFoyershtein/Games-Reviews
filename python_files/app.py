@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect, url_for, session
 from urllib.parse import quote, unquote
-from database import *
+from python_files import database
+# from database import *
 import os
 
 # Initialize Flask app
@@ -10,7 +11,7 @@ app = Flask(__name__)
 mongodb_uri = os.getenv('MONGODB_URI', 'mongodb://mongo:27017/')
 
 # Connect to MongoDB
-client = MongoClient(mongodb_uri)
+client = database.MongoClient(mongodb_uri)
 
 # Accessing a specific database called 'appdb' within the MongoDB server
 db = client['games_reviews_db']
@@ -25,8 +26,8 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 @app.route('/')
 def index():
     # Retrieve all reviews and average rating
-    reviews = get_all_reviews()
-    avg_rate = get_avg_rate()
+    reviews = database.get_all_reviews()
+    avg_rate = database.get_avg_rate()
 
     # Retrieve search query, search results, and total occurrences from session variables
     search_query = session.get('search_query', '')
@@ -58,7 +59,7 @@ def submit():
     encoded_review = quote(user_review)
 
     # Call a function to save the user review and rating to the database
-    response = save_to_database(encoded_review, user_rating)
+    response = database.save_to_database(encoded_review, user_rating)
     print(response)
 
     # Redirect to the home page to display the updated list of reviews and average rating after submitting a review
@@ -71,7 +72,7 @@ def delete_review():
     review_id = request.form['review_id']
     
     # Call a function to delete the review from the database based on the review_id
-    response = delete_review_from_database(review_id)
+    response = database.delete_review_from_database(review_id)
     print(response)
     
     # Redirect to the home page to display the updated list of reviews and average rating after deleting a review
@@ -87,7 +88,7 @@ def search_reviews():
     encoded_query = quote(search_query)
 
     # Call the function to retrieve reviews, passing the query
-    search_results, total_occurrences = search_reviews_in_database(encoded_query)
+    search_results, total_occurrences = database.search_reviews_in_database(encoded_query)
     
     # Store search results and total occurrences in session variables
     session['search_query'] = search_query
