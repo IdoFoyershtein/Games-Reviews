@@ -1,8 +1,8 @@
 import pytest
 import urllib.parse
 from pymongo import MongoClient
-import app
-import database
+from python_files import app
+from python_files import database
 import os
 
 # Setup mongoodb test client and test database
