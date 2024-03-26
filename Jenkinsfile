@@ -69,9 +69,9 @@ pipeline {
                     withCredentials([string(credentialsId: 'ido-games-reviews-github-secret-api', variable: 'GITHUB_API_TOKEN')]) {
                         def response = sh(script: """
                             curl -s -o response.json -w "%{http_code}" -X POST \
-                            -H "Authorization: token ido-games-reviews-github-secret-api" \
+                            -H "Authorization: token ${GITHUB_API_TOKEN}" \
                             -d '{ "title": "PR from ${env.BRANCH_NAME} into main", "head": "${env.BRANCH_NAME}", "base": "main" }' \
-                            ${GITHUB_URL}/api/v3/repos/${OWNER}/${REPO}/pulls
+                            ${GITHUB_URL}/repos/${OWNER}/${REPO}/pulls
                         """, returnStdout: true).trim()
                         if (response.startsWith("2")) {
                             echo "Pull request created successfully."
