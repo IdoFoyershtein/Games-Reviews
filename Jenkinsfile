@@ -69,7 +69,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'ido-games-reviews-github-secret-api', variable: 'GITHUB_API_TOKEN')]) {
                         def response = sh(script: """
                             curl -s -o response.json -w "%{http_code}" -X POST \
-                            -H "Authorization: token ${GITHUB_API_TOKEN}" \
+                            -H "Authorization: token ido-games-reviews-github-secret-api" \
                             -d '{ "title": "PR from ${env.BRANCH_NAME} into main", "head": "${env.BRANCH_NAME}", "base": "main" }' \
                             ${GITHUB_URL}/api/v3/repos/${OWNER}/${REPO}/pulls
                         """, returnStdout: true).trim()
