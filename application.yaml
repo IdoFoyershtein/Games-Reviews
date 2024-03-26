@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://https://github.com/IdoFoyershtein/Games-Reviews
+    repoURL: https://github.com/IdoFoyershtein/Games-Reviews
     targetRevision: HEAD
     path: ./games-reviews-helm
     helm:
