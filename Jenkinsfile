@@ -13,7 +13,7 @@ pipeline {
         DOCKER_IMAGE = 'idof228/games-reviews-app'
         MONGODB_URI = 'mongodb://mongo:27017/games_reviews_db'
         // PROJECT_ID = '55503924'
-        GITHUB_URL = 'https://github.com'
+        GITHUB_URL = 'https://api.github.com'
         OWNER = 'IdoFoyershtein'
         REPO = 'Games-Reviews'
     }
