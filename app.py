@@ -1,7 +1,6 @@
 from flask import Flask, request, render_template, redirect, url_for, session
 from urllib.parse import quote, unquote
-from python_files import database
-# from database import *
+import database
 import os
 
 # Initialize Flask app
