@@ -1,0 +1,30 @@
+additionalPrometheusRulesMap:
+  rule-name:
+    groups:
+    - name: project
+      rules:
+      - alert: LowRunningPodsCount
+        expr: count(kube_pod_status_phase{namespace="default", pod=~"games-reviews-release-games-reviews-helm.*", phase="Running"}) < 3
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Low number of running pods"
+          description: "The count of running pods matching 'games-reviews-release-games-reviews-helm*' in namespace 'default' is below 3."
+      - alert: HighCpuUsage
+        expr: sum(rate(container_cpu_usage_seconds_total{namespace="default", container!="", pod=~"games-reviews-release-games-reviews-helm.*"}[5m])) by (pod) / sum(kube_pod_container_resource_limits_cpu_cores{namespace="default", container!="", pod=~"games-reviews-release-games-reviews-helm.*"}) by (pod) > 0.8
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High CPU usage detected"
+          description: "CPU usage for one or more pods matching 'games-reviews-release-games-reviews-helm*' in namespace 'default' is above 80% of its limit."
+      - alert: HighMemoryUsage
+        expr: sum(rate(container_memory_usage_bytes{namespace="default", container!="", pod=~"games-reviews-release-games-reviews-helm.*"}[5m])) by (pod) / sum(kube_pod_container_resource_limits_memory_bytes{namespace="default", container!="", pod=~"games-reviews-release-games-reviews-helm.*"}) by (pod) > 0.8
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High memory usage detected"
+          description: "Memory usage for one or more pods matching 'games-reviews-release-games-reviews-helm*' in namespace 'default' is above 80% of its limit."
+
