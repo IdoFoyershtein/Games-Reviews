@@ -88,6 +88,25 @@ pipeline {
     
     post {
         success {
+            script {
+            if (CHANGE_TARGET == 'main') {
+                // Use GitHub API to delete the branch
+                def response = sh(script: """
+                    curl -s -o response.json -w "%{http_code}" -X DELETE \
+                    -H "Authorization: token ${GITHUB_API_TOKEN}" \
+                    ${GITHUB_URL}/git/refs/heads/${env.BRANCH_NAME}
+                """, returnStdout: true).trim()
+                if (response.startsWith("2")) {
+                    echo "Branch ${env.BRANCH_NAME} deleted successfully."
+                } else {
+                    echo "Failed to delete branch ${env.BRANCH_NAME}. Response Code: ${response}"
+                    def jsonResponse = readJSON file: 'response.json'
+                    echo "Error message: ${jsonResponse.message}"
+                    error "Branch deletion failed."
+                }
+            } else {
+                echo "Branch ${env.BRANCH_NAME} was not merged into the main branch. Skipping deletion."
+            }
             echo 'Pipeline succeeded!'
         }
         failure {
